@@ -1,189 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scholars Goal</title>
-<style>* { color: #111 !important; }
-.card, .subject, .note, h2, h3, p, span, div { color: #111 !important; }
-.header h1 { color: white !important; }
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f4f6fb;padding:16px}
-.header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:20px;border-radius:16px;text-align:center}
-.header h1{margin:0;font-size:28px}
-.card{background:#fff;border-radius:16px;padding:16px;margin-top:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.item{display:flex;justify-content:space-between;align-items:center;padding:14px;border:1px solid #eee;border-radius:12px;margin-bottom:8px;cursor:pointer;font-weight:bold}
-.item span{font-weight:normal}
-.badge{font-size:12px;padding:5px 10px;border-radius:20px;font-weight:bold;white-space:nowrap}
-.free{background:#dcfce7;color:#166534}
-.locked{background:#fee2e2;color:#991b1b}
-.back{background:#e5e7eb;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer;margin-bottom:10px}
-.pay-box,.note-box{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:flex-start;justify-content:center;padding:20px;z-index:99;overflow-y:auto}
-.pay-card,.note-card{background:#fff;border-radius:20px;padding:22px;width:100%;max-width:420px}
-.mpesa{background:#f0fdf4;border:2px dashed #16a34a;padding:14px;border-radius:12px;margin:14px 0;text-align:center}
-.mpesa b{font-size:22px}
-.btn{display:block;width:100%;padding:13px;border:none;border-radius:12px;font-weight:bold;font-size:15px;cursor:pointer;margin-top:10px}
-.btn-green{background:#16a34a;color:#fff}
-.btn-grey{background:#e5e7eb}
-.note-card h3{margin-top:0;color:#4f46e5}
-.note-card p,.note-card li{font-size:14px;line-height:1.6}
-</style>
-</head>
-<body>
-<img src="IMG-20261118-WA5844.jpg" style="width:180px; display:block; margin:15px auto 5px auto; border-radius:18px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-  <div class="header"><h1>Learn Smart. Pass Big.</h1><p>Learn Smart. Pass Big. | TIE New Syllabus</p><p>Home &gt; All Subjects</p></div>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scholars Goal - O-Level</title>
+<style>
+body{font-family:Arial;margin:0;background:#f4f8ff;color:#222}
+header{background:#0b3d91;color:#fff;padding:20px;text-align:center}
+header h1{font-size:38px;margin:0}
+.card{background:#fff;margin:12px;padding:15px;border-radius:12px;box-shadow:0 2px 8px #0001}
+button{width:100%;padding:14px;margin:6px 0;border:0;border-radius:10px;background:#0b3d91;color:#fff;font-size:16px}
+button.green{background:#0a7a42} button.gray{background:#666}
+.item{background:#eef3ff;padding:12px;margin:6px 0;border-radius:8px}
+.note{background:#fffbe6;padding:12px;border-radius:8px}
+</style></head><body>
+<header><h1>🎓 SCHOLARS GOAL</h1><p>O-Level Summaries | NECTA Focus | Form 1-4</p></header>
 
-<!-- PAGE 1: ALL SUBJECTS -->
-<div id="pageSubjects" class="card">
-<h2>📚 Choose Subject</h2>
-<div class="item" onclick="openSubject('Biology','🧬')">🧬 Biology <span>›</span></div>
-<div class="item" onclick="openSubject('Chemistry','🧪')">🧪 Chemistry <span>›</span></div>
-<div class="item" onclick="openSubject('Physics','⚛️')">⚛️ Physics <span>›</span></div>
-<div class="item" onclick="openSubject('Basic Mathematics','📐')">📐 Basic Mathematics <span>›</span></div>
-<div class="item" onclick="openSubject('English','📖')">📖 English <span>›</span></div>
-<div class="item" onclick="openSubject('Kiswahili','📚')">📚 Kiswahili <span>›</span></div>
-<div class="item" onclick="openSubject('Geography','🌍')">🌍 Geography <span>›</span></div>
-<div class="item" onclick="openSubject('History','🏛️')">🏛️ History <span>›</span></div>
-<div class="item" onclick="openSubject('Civics','⚖️')">⚖️ Civics / Uraia <span>›</span></div>
+<div id="pageSubjects" class="card"><h2>Choose Subject</h2>
+<button onclick="chooseSubject('Biology')">🧬 Biology</button>
+<button onclick="chooseSubject('Chemistry')">🧪 Chemistry</button>
+<button onclick="chooseSubject('Physics')">⚡ Physics</button>
+<button onclick="chooseSubject('Mathematics')">📐 Mathematics</button>
+<button onclick="chooseSubject('English')">📖 English</button>
+<button onclick="chooseSubject('Kiswahili')">📚 Kiswahili</button>
+<button onclick="chooseSubject('Geography')">🌍 Geography</button>
+<button onclick="chooseSubject('History')">🏛️ History</button>
+<button onclick="chooseSubject('Civics')">⚖️ Civics</button>
 </div>
 
-<!-- PAGE 2: FORMS 1-4 -->
-<div id="pageForms" class="card" style="display:none">
-<button class="back" onclick="goHome()">← Back to Subjects</button>
-<h2 id="subjectTitle">Biology</h2>
-<div class="item" onclick="openForm(1)">Biology Form 1 <span>›</span></div>
-<div class="item" onclick="openForm(2)">Biology Form 2 <span>›</span></div>
-<div class="item" onclick="openForm(3)">Biology Form 3 <span>›</span></div>
-<div class="item" onclick="openForm(4)">Biology Form 4 <span>›</span></div>
+<div id="pageForms" class="card" style="display:none"><button class="gray" onclick="backToSubjects()">← Subjects</button><h2 id="subjectTitle"></h2>
+<button onclick="openForm(1)">Form 1</button><button onclick="openForm(2)">Form 2</button><button onclick="openForm(3)">Form 3</button><button onclick="openForm(4)">Form 4</button>
 </div>
 
-<!-- PAGE 3: TOPICS -->
-<div id="pageTopics" class="card" style="display:none">
-<button class="back" onclick="backToForms()">← Back to Forms</button>
-<h2 id="formTitle">Topics Form 1</h2>
-<div id="topicsList"></div>
-</div>
+<div id="pageTopics" class="card" style="display:none"><button class="gray" onclick="backToForms()">← Back</button><h2 id="formTitle"></h2><div id="topicsList"></div></div>
 
-<div id="payBox" class="pay-box"><div class="pay-card">
-<h3 id="payTitle">🔒 Locked</h3>
-<p>Pay <b>1,000 TZS</b> once and get ALL topics!</p>
-<div class="mpesa"><div>M-PESA</div><b>+255 753 769 506</b><div>ELIO TUMAINI</div><div>Reference: SCHOLARS</div></div>
-<p style="font-size:13px">1. Lipa 1,000 TZS<br>2. Tuma screenshot WhatsApp<br>3. Utapata code</p>
-<button class="btn btn-green" onclick="sendWhatsApp()">📲 I Have Paid - Send on WhatsApp</button>
-<button class="btn btn-grey" onclick="closePay()">Close</button>
-</div></div>
-
-<div id="noteBox" class="note-box"><div class="note-card">
-<h3>🧬 Introduction to Biology</h3>
-<h4>1. What is Biology?</h4>
-<p>Biology is the study of living things. From Greek: <b>Bios</b> = Life, <b>Logos</b> = Study.</p>
-<h4>2. Branches of Biology</h4>
-<ul><li><b>Botany</b> - Plants</li><li><b>Zoology</b> - Animals</li><li><b>Microbiology</b> - Micro-organisms</li><li><b>Anatomy</b> - Body structure</li><li><b>Physiology</b> - Body functions</li><li><b>Genetics</b> - Inheritance</li><li><b>Ecology</b> - Living things & environment</li></ul>
-<h4>3. Importance</h4>
-<p>Helps understand health, helps farmers, helps doctors, helps conserve environment.</p>
-<h4>4. Scientific Processes</h4>
-<p>Observation → Problem → Hypothesis → Experiment → Data → Conclusion</p>
-<h4>5. Lab Safety</h4>
-<p>Don't taste chemicals, wear lab coat, don't run, wash hands, report accidents.</p>
-<h4>📝 NECTA Question</h4>
-<p><b>Q:</b> Define Biology and mention 3 branches.<br><b>A:</b> Biology is study of living things. Branches: Botany, Zoology, Microbiology.</p>
-<button class="btn btn-grey" onclick="closeNote()">Close</button>
-</div></div>
+<div id="pageNote" class="card" style="display:none"><button class="gray" onclick="backToTopics()">← Back to Topics</button><h2 id="noteTitle"></h2><div id="noteBody" class="note"></div><br><button class="green" onclick="sendWhatsApp()">Get Full PDF via WhatsApp</button></div>
 
 <script>
-let currentSubject="Biology";
-let currentEmoji="🧬";
-let currentForm=1;
-let currentTopic="";
-
-let topicsData={
-"Biology|1":["Introduction to Biology","Safety in Our Environment","Health and Immunity","Cell Structure & Organization","Classification of Living Things","Nutrition in Plants"],
-"Biology|2":["Nutrition in Animals","Balance of Nature","Transportation in Plants","Gaseous Exchange & Respiration","Movement"],
-"Biology|3":["Coordination","Excretion","Regulation","Reproduction"],
-"Biology|4":["Genetics","Evolution","HIV/AIDS & STIs"],
-"Chemistry|1":["Introduction to Chemistry","Structure of Matter","Periodic Table","Chemical Bonding","Formulae & Equations"],
-"Chemistry|2":["Acids, Bases & Salts","Oxygen","Hydrogen","Water"],
-"Chemistry|3":["Atomic Structure","Chemical Equilibrium","Extraction of Metals"],
-"Chemistry|4":["Organic Chemistry","Energy & Chemical Reactions"],
-"Physics|1":["Introduction to Physics","Measurement","Force","Pressure","Work, Energy & Power"],
-"Physics|2":["Light","Static Electricity","Current Electricity","Magnetism"],
-"Physics|3":["Newton's Laws","Heat","Waves","Sound"],
-"Physics|4":["Radioactivity","Electronics","Electromagnetism"],
-"Basic Mathematics|1":["Numbers","Fractions","Decimals & Percentages","Approximation","Ratio & Proportion"],
-"Basic Mathematics|2":["Algebra","Geometry","Pythagoras","Trigonometry"],
-"Basic Mathematics|3":["Quadratic Equations","Statistics","Probability"],
-"Basic Mathematics|4":["Matrices","Vectors","Calculus Basics"],
-"English|1":["Grammar - Tenses","Comprehension","Writing - Letters & Essays","Literature"],
-"English|2":["Grammar - Conditionals","Summary Writing","Speech Writing","Literature"],
-"English|3":["Grammar - Advanced","Reading Skills","Composition"],
-"English|4":["NECTA Revision","Comprehension","Writing"],
-"Kiswahili|1":["Sarufi","Uandishi","Fasihi","Ufahamu"],
-"Kiswahili|2":["Sarufi","Uandishi","Fasihi"],
-"Kiswahili|3":["Sarufi","Fasihi","Uandishi"],
-"Kiswahili|4":["Marudio - NECTA"],
-"Geography|1":["Introduction to Geography","Solar System & Earth","Map Work","Weather & Climate"],
-"Geography|2":["Climate & Vegetation","Water Bodies","Human Activities"],
-"Geography|3":["Population","Agriculture","Mining"],
-"Geography|4":["Industry","Transport","Environment"],
-"History|1":["Sources of History","Evolution of Man","Development of Technology"],
-"History|2":["Interaction Among People","Colonialism"],
-"History|3":["Colonial Economy","Nationalism"],
-"History|4":["Independence","Development in Tanzania"],
-"Civics|1":["Our Nation","Promotion of Life Skills","Human Rights"],
-"Civics|2":["Democracy","Government","Citizenship"],
-"Civics|3":["Constitution","Leadership"],
-"Civics|4":["Economic Development","Globalization"]
+let curSub='Biology',curForm=1,curTopic=0;
+const bio={
+"Form 1":[
+{t:"1. Introduction to Biology",n:"<b>Biology = study of living things.</b><br>• Branches: Botany, Zoology, Microbiology, Ecology<br>• MRS GREN: Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition<br><b>NECTA Q:</b> Mention 4 characteristics of living things."},
+{t:"2. Safety in Laboratory",n:"<b>Lab Rules:</b> No eating, No running, Wear lab coat, Tie hair.<br>• First Aid: Acid on skin - wash with plenty water. Cut - cover with clean cloth.<br>• Apparatus: Test tube, Beaker, Microscope, Bunsen burner.<br><b>NECTA Q:</b> State 4 lab safety rules."},
+{t:"3. The Cell",n:"<b>Cell = basic unit of life.</b><br>• Parts: Nucleus (controls), Mitochondria (energy), Cytoplasm, Membrane, Vacuole, Chloroplast (plants)<br>• Plant has wall + chloroplast + big vacuole. Animal has small vacuole, no wall.<br>• Cell -> Tissue -> Organ -> System -> Organism<br><b>NECTA Q (2023):</b> State function of mitochondria."},
+{t:"4. Classification",n:"<b>5 Kingdoms:</b> Monera, Protoctista, Fungi, Plantae, Animalia<br>• Binomial: Genus + species e.g. <i>Homo sapiens</i><br>• Ranks: Kingdom, Phylum, Class, Order, Family, Genus, Species<br><b>NECTA Q:</b> Write scientific name of human."}
+],
+"Form 2":[
+{t:"1. Nutrition",n:"<b>Classes:</b> Carbohydrates, Proteins, Vitamins, Fats, Minerals, Water, Roughage<br>• Photosynthesis: CO2 + Water + Light -> Glucose + Oxygen. In chloroplast.<br>• Kwashiorkor (lack protein), Anaemia (lack iron), Rickets (lack Vit D)<br><b>NECTA Q:</b> Write equation for photosynthesis."},
+{t:"2. Gaseous Exchange & Respiration",n:"<b>Respiration:</b> Glucose + Oxygen -> Energy + CO2 + Water<br>• Aerobic = with oxygen. Anaerobic = without oxygen.<br>• Organs: Lungs (human), Gills (fish), Stomata (plants), Skin (frog)<br><b>NECTA Q:</b> Differentiate aerobic and anaerobic."},
+{t:"3. Movement",n:"<b>Plants:</b> Phototropism (to light), Geotropism (to gravity)<br>• Animals: Muscles + Skeleton. Biceps contracts, triceps relaxes.<br>• Joints: Hinge (knee), Ball & socket (shoulder)<br><b>NECTA Q:</b> Give 2 joints with examples."}
+],
+"Form 3":[
+{t:"1. Nervous System",n:"<b>Neurone = nerve cell.</b> Dendrites, Axon, Cell body.<br>• CNS = Brain + Spinal cord.<br>• Reflex arc: Receptor -> Sensory -> CNS -> Motor -> Effector<br><b>NECTA Q:</b> Draw and label a neurone."},
+{t:"2. Hormones",n:"<b>Glands:</b> Pituitary (master), Thyroid (thyroxine), Pancreas (insulin), Adrenal (adrenaline)<br>• Insulin controls sugar. Lack = Diabetes.<br><b>NECTA Q:</b> State function of insulin."},
+{t:"3. Excretion",n:"<b>Excretion = removal of waste.</b><br>• Kidney = main organ. Nephron = unit.<br>• Waste: Urea, CO2, Salts, Water.<br><b>NECTA Q:</b> Name 3 excretory organs."},
+{t:"4. Reproduction",n:"<b>Sexual:</b> Male + Female gametes fuse. <b>Asexual:</b> One parent.<br>• Human: Testis = sperms, Ovary = eggs. Fertilisation in fallopian tube.<br>• Plants: Pollination -> Fertilisation -> Seed.<br><b>NECTA Q:</b> Differentiate sexual and asexual."}
+],
+"Form 4":[
+{t:"1. Genetics",n:"<b>Gene = part of DNA. Allele = form of gene.</b><br>• Dominant (T) hides recessive (t). Genotype = TT, Tt, tt.<br>• Cross Tt x Tt = 3 Tall : 1 Short<br>• XX = Female, XY = Male<br><b>NECTA Q:</b> Cross Tt x tt, give ratio."},
+{t:"2. Evolution",n:"<b>Evolution = gradual change over time.</b><br>• Evidence: Fossils, Homologous structures, Embryos<br>• Darwin: Natural selection - survival of fittest.<br><b>NECTA Q:</b> State Darwin's theory."},
+{t:"3. Ecology",n:"<b>Ecology = organisms + environment.</b><br>• Food chain: Producer -> Primary -> Secondary -> Tertiary<br>• Food web = many chains linked. Energy decreases upwards.<br>• Pollution: Air, Water, Soil.<br><b>NECTA Q:</b> Make food chain with 4 organisms."}
+]
 };
-
-function openSubject(sub,emoji){
-currentSubject=sub; currentEmoji=emoji;
-document.getElementById('subjectTitle').innerText=emoji+" "+sub;
-document.getElementById('pageSubjects').style.display='none';
-document.getElementById('pageForms').style.display='block';
-document.getElementById('pageTopics').style.display='none';
-// update form buttons text
-let items=document.querySelectorAll('#pageForms .item');
-items[0].innerHTML=sub+" Form 1 <span>›</span>";
-items[1].innerHTML=sub+" Form 2 <span>›</span>";
-items[2].innerHTML=sub+" Form 3 <span>›</span>";
-items[3].innerHTML=sub+" Form 4 <span>›</span>";
-document.getElementById('pathText').innerText="Home > "+sub;
-}
-function goHome(){
-document.getElementById('pageSubjects').style.display='block';
-document.getElementById('pageForms').style.display='none';
-document.getElementById('pageTopics').style.display='none';
-document.getElementById('pathText').innerText="Home > All Subjects";
-}
-function backToForms(){
-document.getElementById('pageForms').style.display='block';
-document.getElementById('pageTopics').style.display='none';
-document.getElementById('pathText').innerText="Home > "+currentSubject;
-}
-function openForm(form){
-currentForm=form;
-document.getElementById('formTitle').innerText="Topics "+currentSubject+" Form "+form+":";
-document.getElementById('pageForms').style.display='none';
-document.getElementById('pageTopics').style.display='block';
-document.getElementById('pathText').innerText="Home > "+currentSubject+" > Form "+form;
-let key=currentSubject+"|"+form;
-let list=topicsData[key]||["Coming Soon"];
-let html="";
-list.forEach((t,i)=>{
-let num=(i+1).toString().padStart(2,'0');
-if(currentSubject=="Biology" && form==1 && i==0){
-html+=`<div class="item" onclick="openNote()"><b>${num}. ${t}</b><span class="badge free">FREE • Open</span></div>`;
-}else{
-html+=`<div class="item" onclick="showPay('${t}')"><b>${num}. ${t}</b><span class="badge locked">🔒 Locked</span></div>`;
-}
-});
-document.getElementById('topicsList').innerHTML=html;
-}
-function showPay(t){currentTopic=t;document.getElementById('payTitle').innerText="🔒 "+t+" - Locked";document.getElementById('payBox').style.display='flex';}
-function closePay(){document.getElementById('payBox').style.display='none';}
-function openNote(){document.getElementById('noteBox').style.display='flex';}
-function closeNote(){document.getElementById('noteBox').style.display='none';}
-function sendWhatsApp(){let msg="Hello Elio! I have paid 1,000 TZS for Scholars Goal. Subject: "+currentSubject+" Form "+currentForm+" Topic: "+currentTopic+". Here is screenshot.";window.open("https://wa.me/255753769506?text="+encodeURIComponent(msg),"_blank");}
-</script>
-</body>
-  </html>
+function chooseSubject(s){curSub=s;document.getElementById('pageSubjects').style.display='none';document.getElementById('pageForms').style.display='block';document.getElementById('subjectTitle').innerText=s;}
+function backToSubjects(){document.getElementById('pageForms').style.display='none';document.getElementById('pageSubjects').style.display='block';}
+function backToForms(){document.getElementById('pageTopics').style.display='none';document.getElementById('pageForms').style.display='block';}
+function backToTopics(){document.getElementById('pageNote').style.display='none';document.getElementById('pageTopics').style.display='block';}
+function openForm(f){curForm=f;document.getElementById('pageForms').style.display='none';document.getElementById('pageTopics').style.display='block';document.getElementById('formTitle').innerText=curSub+' Form '+f;let h='';if(curSub=='Biology'){let list=bio['Form '+f];list.forEach((t,i)=>{h+='<div class="item" onclick="openNote('+i+')">'+t.t+' →</div>'});}else{h='<div class="item">📚 '+curSub+' Form '+f+' notes - Coming Soon!<br><br>Tap below to order via WhatsApp.</div><button class="green" onclick="sendWhatsApp()">Order '+curSub+' Form '+f+' on WhatsApp</button>';}document.getElementById('topicsList').innerHTML=h;}
+function openNote(i){curTopic=i;let t=bio['Form '+curForm][i];document.getElementById('pageTopics').style.display='none';document.getElementById('pageNote').style.display='block';document.getElementById('noteTitle').innerText=t.t;document.getElementById('noteBody').innerHTML=t.n;}
+function sendWhatsApp(){let m="Hello Scholars Goal, I want "+curSub+" Form "+curForm+" Full PDF";window.open("https://wa.me/255000000000?text="+encodeURIComponent(m));}
+</script></body></html>
