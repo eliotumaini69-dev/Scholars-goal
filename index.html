@@ -171,7 +171,7 @@ function closePay(){document.getElementById('payBox').style.display='none';}
 function openNote(t){document.getElementById('noteTitle').innerText=t;document.getElementById('noteBox').style.display='flex';}
 function closeNote(){document.getElementById('noteBox').style.display='none';}
 function sendWhatsApp(){let msg="Hello Elio! I have paid 1,000 TZS for Scholars Goal. Subject: "+currentSubject+" Form "+currentForm+". Here is screenshot.";window.open("https://wa.me/255753769506?text="+encodeURIComponent(msg),"_blank");}
-function unlockWithCode(){
+ function unlockWithCode(){
   var code = document.getElementById('unlockCode').value.trim().toUpperCase();
   if(code === 'BIO-2026'){ localStorage.setItem('unlocked_Biology','yes'); alert('Success! Biology Unlocked!'); location.reload(); }
   else { alert('Wrong code! Please pay 1,000 and get correct code from Elio on WhatsApp.'); }
